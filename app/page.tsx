@@ -56,21 +56,139 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <header className="px-4 lg:px-6 h-14 flex items-center border-b">
-        <Link className="flex items-center justify-center" href="#">
-          <span className="font-bold text-xl">NFT Marketplace</span>
-        </Link>
-        <nav className="ml-auto flex gap-4 sm:gap-6">
-          <Link className="text-sm font-medium hover:underline underline-offset-4" href="/explore">
-            Explore
-          </Link>
-          <Link className="text-sm font-medium hover:underline underline-offset-4" href="/create">
-            Create
-          </Link>
-          <Link className="text-sm font-medium hover:underline underline-offset-4" href="/my-nfts">
-            My NFTs
-          </Link>
-        </nav>
+      <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+        <div className="container flex h-16 items-center justify-between">
+          <div className="flex items-center gap-2">
+            <Link className="flex items-center gap-2" href="/">
+              <span className="font-bold text-xl bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-transparent">
+                NFT Marketplace
+              </span>
+            </Link>
+          </div>
+          <div className="flex items-center gap-4">
+            <div className="relative w-64">
+              <input
+                type="search"
+                placeholder="Search NFTs..."
+                className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              />
+              <button className="absolute right-2 top-1/2 -translate-y-1/2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="text-muted-foreground"
+                >
+                  <circle cx="11" cy="11" r="8" />
+                  <path d="m21 21-4.3-4.3" />
+                </svg>
+              </button>
+            </div>
+            <nav className="flex items-center gap-6">
+              <Link
+                className="text-sm font-medium transition-colors hover:text-primary"
+                href="/explore"
+              >
+                Explore
+              </Link>
+              <Link
+                className="text-sm font-medium transition-colors hover:text-primary"
+                href="/create"
+              >
+                Create
+              </Link>
+              <Link
+                className="text-sm font-medium transition-colors hover:text-primary"
+                href="/my-nfts"
+              >
+                My NFTs
+              </Link>
+              <div className="relative group">
+                <button className="flex items-center gap-2 text-sm font-medium transition-colors hover:text-primary">
+                  More
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <path d="m6 9 6 6 6-6" />
+                  </svg>
+                </button>
+                <div className="absolute right-0 mt-2 w-48 rounded-md border bg-popover py-1 text-popover-foreground shadow-md opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
+                  <Link
+                    href="/stats"
+                    className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground"
+                  >
+                    Stats
+                  </Link>
+                  <Link
+                    href="/activity"
+                    className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground"
+                  >
+                    Activity
+                  </Link>
+                  <Link
+                    href="/rankings"
+                    className="block px-4 py-2 text-sm hover:bg-accent hover:text-accent-foreground"
+                  >
+                    Rankings
+                  </Link>
+                </div>
+              </div>
+            </nav>
+            <div className="flex items-center gap-2">
+              <Button variant="outline" size="sm">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="mr-2"
+                >
+                  <path d="M21 12V7H5a2 2 0 0 1 0-4h14v4" />
+                  <path d="M3 5v14a2 2 0 0 0 2 2h16v-5" />
+                  <path d="M18 12a2 2 0 0 0 0 4h4v-4Z" />
+                </svg>
+                0.5 ETH
+              </Button>
+              <Button variant="default" size="sm" className="flex items-center gap-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M21 12V7H5a2 2 0 0 1 0-4h14v4" />
+                  <path d="M3 5v14a2 2 0 0 0 2 2h16v-5" />
+                  <path d="M18 12a2 2 0 0 0 0 4h4v-4Z" />
+                </svg>
+                Connect Wallet
+              </Button>
+            </div>
+          </div>
+        </div>
       </header>
       <main className="flex-1">
         <section ref={heroRef} className="w-full py-12 md:py-24 lg:py-32 xl:py-48">
@@ -99,14 +217,21 @@ export default function Home() {
                   </Link>
                 </div>
               </div>
-              <div className="mx-auto aspect-video overflow-hidden rounded-xl object-cover sm:w-full lg:order-last">
+              <div className="mx-auto aspect-video overflow-hidden rounded-xl object-cover sm:w-full lg:order-last relative group">
                 <img
                   alt="NFT Showcase"
-                  className="aspect-video object-cover w-full"
+                  className="aspect-video object-cover w-full transition-transform duration-500 group-hover:scale-105"
                   height="310"
-                  src="https://img.freepik.com/free-vector/holographic-city-futuristic_52683-95526.jpg"
+                  src="https://img.freepik.com/free-vector/cyberpunk-city-neon-lights_23-2151100250.jpg"
                   width="550"
                 />
+                <div className="absolute inset-0 bg-gradient-to-r from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <div className="text-white text-center p-4">
+                    <h3 className="text-2xl font-bold mb-2">Explore the Future</h3>
+                    <p className="text-sm">Discover unique digital assets</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -272,16 +397,52 @@ export default function Home() {
           </div>
         </section>
       </main>
-      <footer className="flex flex-col gap-2 sm:flex-row py-6 w-full border-t px-4 md:px-6">
-        <p className="text-xs text-gray-500 dark:text-gray-400">© 2023 NFT Marketplace. All rights reserved.</p>
-        <nav className="sm:ml-auto flex gap-4 sm:gap-6">
-          <Link className="text-xs hover:underline underline-offset-4" href="#">
-            Terms of Service
-          </Link>
-          <Link className="text-xs hover:underline underline-offset-4" href="#">
-            Privacy
-          </Link>
-        </nav>
+      <footer className="border-t">
+        <div className="container flex flex-col items-center justify-between gap-4 py-10 md:h-24 md:flex-row md:py-0">
+          <div className="flex flex-col items-center gap-4 px-8 md:flex-row md:gap-2 md:px-0">
+            <p className="text-center text-sm leading-loose text-muted-foreground md:text-left">
+              Built by{" "}
+              <a
+                href="#"
+                target="_blank"
+                rel="noreferrer"
+                className="font-medium underline underline-offset-4"
+              >
+                NFT Marketplace
+              </a>
+              . The source code is available on{" "}
+              <a
+                href="#"
+                target="_blank"
+                rel="noreferrer"
+                className="font-medium underline underline-offset-4"
+              >
+                GitHub
+              </a>
+              .
+            </p>
+          </div>
+          <div className="flex items-center gap-4">
+            <Link
+              href="#"
+              className="text-sm text-muted-foreground hover:text-foreground"
+            >
+              Terms
+            </Link>
+            <Link
+              href="#"
+              className="text-sm text-muted-foreground hover:text-foreground"
+            >
+              Privacy
+            </Link>
+            <Link
+              href="#"
+              className="text-sm text-muted-foreground hover:text-foreground"
+            >
+              Contact
+            </Link>
+          </div>
+        </div>
       </footer>
     </div>
   )
